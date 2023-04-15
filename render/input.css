@@ -1,0 +1,6 @@
+/* styles.css */
+
+/* Add styles here to customize the appearance of your app */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

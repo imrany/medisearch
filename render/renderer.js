@@ -8,6 +8,8 @@
 const searchForm=document.querySelector("#search-form");
 const searchInput=document.querySelector("#search-input");
 const searchContent=document.querySelector("#search-content");
+const resultContent=document.querySelector("#result-items");
+const optionsElement=document.getElementById("options");
 const searchData=[
     {
         sickness:"Malaria",
@@ -35,13 +37,34 @@ const searchData=[
     }
 ]
 
+let user_options=[]
+function options(e){
+    const user_option=e.target.value;
+    resultContent.innerHTML=" ";
+    optionsElement.innerHTML=" ";
+    user_options.forEach(i=>{
+        let result_option=i.includes(user_option);
+        if(result_option){
+            let li=`
+            <div class="flex text-justify w-full hover:bg-gray-300 cursor-pointer mt-4 py-2">
+                <img src="../assets/icons/icon_clock.svg" class="w-[23px] h-[23px]"/>
+                <p class="text-base text-black ml-2">${i}</p>
+            </div>
+            `
+            optionsElement.addEventListener('click',expand)
+            optionsElement.innerHTML+=li;
+        }
+    })
+}
+
 function expand(e){
-    searchContent.innerHTML=" ";
+    resultContent.innerHTML=" ";
+    optionsElement.innerHTML=" ";
     var user_input=e.target.value;
+    user_options.push(user_input);
     searchData.forEach(i=>{
     let result=i.signs.includes(user_input)
     if(result){
-        console.log(i.desc)
         let li=`
         <div class="text-justify w-full mt-4 py-2">
             <div class="flex justify-between border-b">
@@ -58,13 +81,13 @@ function expand(e){
             </div>
         </div>
         `
-        searchContent.innerHTML+=li;
+        resultContent.innerHTML+=li;
     }
     })
 }
 
 function minimizeSearch(){
-    searchContent.innerHTML=" ";
+    resultContent.innerHTML=" ";
 }
 
 async function search(e){
@@ -77,5 +100,6 @@ async function search(e){
 }
 
 searchInput.addEventListener('change',expand);
+searchInput.addEventListener('keydown',options);
 searchForm.addEventListener("submit",search);
 document.querySelector("body").addEventListener("click",minimizeSearch)

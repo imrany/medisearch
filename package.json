@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron .",
     "dev": "electronmon .",
-    "tailwindcss":"npx tailwindcss -i ./render/input.css -o ./render/output.css"
+    "tailwindcss":"npx tailwindcss -i ./render/input.css -o ./render/output.css --watch"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [

@@ -8,11 +8,20 @@
     <title>Medisearch</title>
   </head>
   <body>
-    <h1 class="text-slate-80">Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
+    <div class="flex-col text-center items-center justify-center py-10">
+      <h1 class="text-6xl font-bold text-blue-500 text-slate-80">Medisearch</h1>
+      <div class="flex-col justify-center text-center items-center lg:px-[20vw] px-10 my-8">
+        <form id="search-form" class="rounded-[50px] py-3 px-8 border shadow-xl">
+          <div class="flex">
+            <img src="../assets/icons/icon_search.svg" alt="Search"/>
+            <input id="search-input" name="searchField" type="search" autocomplete="off" spellcheck="false" class="placeholder-slate-600 h-full text-lg px-4 w-full" placeholder="Search an illness sign"/>
+          </div>
+          <div  id="search-content">
+            
+          </div>
+        </form>
+      </div>
+    </div>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
   </body>

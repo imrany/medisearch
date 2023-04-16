@@ -11,7 +11,7 @@ npx tailwindcss -i ./render/input.css -o ./render/output.css --watch
     <source src="./assets/demo_video/video.mp4"/>
 </video>
 
-<video width="500" height="280" controls>
+<video width="500" muted height="280" markdown="0" controls>
   <source src="./assets/demo_video/video.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>

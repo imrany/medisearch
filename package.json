@@ -1,8 +1,8 @@
 {
-  "name": "desktop-app",
-  "productName":"Desktop app",
+  "name": "Medisearch",
+  "productName":"Medisearch",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A medical search engine",
   "main": "main.js",
   "scripts": {
     "start": "electron .",

@@ -5,6 +5,7 @@ const path = require('path')
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    title:"Medisearch",
     width: 800,
     height: 600,
     webPreferences: {
@@ -17,6 +18,25 @@ function createWindow () {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
+}
+
+//about window
+function createAboutWindow () {
+  // Create the browser window.
+  const aboutWindow = new BrowserWindow({
+    title:"About Medisearch",
+    width: 600,
+    height: 400,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
+  })
+
+  // and load the about.html of the app.
+  aboutWindow.loadFile(path.join(__dirname,'./render/about.html'))
+
+  // Open the DevTools.
+  // aboutWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
@@ -39,14 +59,15 @@ app.whenReady().then(() => {
 //custom menu template
 const menu=[
   {
-    label:"File",
-    submenu:[
-      {
-        label:"Quit",
-        click:()=>app.quit(),
-        accelerator:"CmdOrCrt+W"
-      }
-    ]
+    role:"fileMenu",
+    // label:"File",
+    // submenu:[
+    //   {
+    //     label:"Quit",
+    //     click:()=>app.quit(),
+    //     accelerator:"CmdOrCrt+W"
+    //   }
+    // ]
   }
 ];
 

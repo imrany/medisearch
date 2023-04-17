@@ -7,9 +7,26 @@
   "scripts": {
     "start": "electron .",
     "dev": "electronmon .",
-    "tailwindcss": "npx tailwindcss -i ./render/input.css -o ./render/output.css --watch"
+    "tailwindcss": "npx tailwindcss -i ./render/input.css -o ./render/output.css --watch",
+    "build":"electron-builder"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "build":{
+    "appId":"medisearch",
+    "win":{
+      "target":[
+        "nsis"
+      ],
+      "icon":""
+    },
+    "nsis":{
+     "oneClick":true,
+     "installerIcon":"",
+     "uninstallerIcon":"",
+     "license":"LICENSE.md",
+     "allowToChangeInstallationDirectory":false
+    }
+   },
+  "repository": "https://github.com/imrany/medisearch.git",
   "keywords": [
     "Electron",
     "quick",

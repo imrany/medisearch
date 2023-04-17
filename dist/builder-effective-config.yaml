@@ -1,0 +1,16 @@
+directories:
+  output: dist
+  buildResources: build
+appId: medisearch
+win:
+  target:
+    - nsis
+  icon: ''
+nsis:
+  oneClick: true
+  installerIcon: ''
+  uninstallerIcon: ''
+  license: LICENSE.md
+  allowToChangeInstallationDirectory: false
+files: []
+electronVersion: 23.1.3

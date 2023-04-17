@@ -102,4 +102,4 @@ async function search(e){
 searchInput.addEventListener('change',expand);
 searchInput.addEventListener('keydown',options);
 searchForm.addEventListener("submit",search);
-document.querySelector("body").addEventListener("click",minimizeSearch)
+document.querySelector("body").addEventListener("dblclick",minimizeSearch)

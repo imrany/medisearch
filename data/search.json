@@ -1,0 +1,26 @@
+[
+    {
+        "sickness":"Malaria",
+        "signs":"Headache, stomachache",
+        "desc":"Malaria is a back infection, a water bourne.",
+        "image":"../assets/comp.jpg"
+    },
+    {
+        "sickness":"Back pain",
+        "signs":"Fatigue, aging",
+        "desc":"Back pain mostly caused by fatigue and over work.",
+        "image":"../assets/comp1.jpg"
+    },
+    {
+        "sickness":"Cholera",
+        "signs":"Joint pain, stomachache",
+        "desc":"Cholera is a water borne disease.",
+        "image":"../assets/comp2.jpg"
+    },
+    {
+        "sickness":"Asthma",
+        "signs":"Joint pain, coughing",
+        "desc":"Asthma is a bad infection.",
+        "image":"../assets/comp1.jpg"
+    }
+]

@@ -10,32 +10,13 @@ const searchInput=document.querySelector("#search-input");
 const searchContent=document.querySelector("#search-content");
 const resultContent=document.querySelector("#result-items");
 const optionsElement=document.getElementById("options");
-const searchData=[
-    {
-        sickness:"Malaria",
-        signs:"Headache, stomachache",
-        desc:"Malaria is a back infection, a water bourne.",
-        image:"../assets/comp.jpg"
-    },
-    {
-        sickness:"Back pain",
-        signs:"Fatigue, aging",
-        desc:"Back pain mostly caused by fatigue and over work.",
-        image:"../assets/comp1.jpg"
-    },
-    {
-        sickness:"Cholera",
-        signs:"Joint pain, stomachache",
-        desc:"Cholera is a water borne disease.",
-        image:"../assets/comp2.jpg"
-    },
-    {
-        sickness:"Asthma",
-        signs:"Joint pain, coughing",
-        desc:"Asthma is a bad infection.",
-        image:"../assets/comp1.jpg"
-    }
-]
+
+let searchData=[];
+const fun=async()=>{
+    const response=await window.versions.serve();
+    searchData=response;
+}
+fun()
 
 let user_options=[]
 function options(e){

@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, Menu} = require('electron')
+const {app, BrowserWindow, Menu, ipcMain} = require('electron')
+const {searchData}=require("./serve")
 const path = require('path')
 
 function createWindow () {
@@ -9,9 +10,11 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration:true
     }
   })
+  ipcMain.handle('serve',()=>searchData)
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname,'./render/index.html'))

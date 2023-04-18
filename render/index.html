@@ -8,7 +8,7 @@
     <title>Medisearch</title>
   </head>
   <body>
-    <div class="flex-col text-center items-center justify-center py-10">
+    <div class="flex-col text-center items-center justify-center py-10" id="home">
       <h1 class="text-6xl font-bold text-blue-500 text-slate-80">Medisearch</h1>
       <div class="flex-col justify-center text-center items-center lg:px-[20vw] px-10 my-8">
         <form id="search-form" class="rounded-[50px] py-3 px-8 border shadow-xl">
@@ -25,12 +25,98 @@
       </div>
 
       <div class="flex items-center justify-center mt-20 mb-10">
-        <a href="./Assistance/assistance.html" class="flex rounded-[20px] w-[200px] border-blue-100 hover:border-white border hover:bg-blue-100 cursor-pointer text-blue-600 justify-between py-1 px-4">
+        <div id="open-playground" class="flex rounded-[20px] w-[200px] border-blue-100 hover:border-white border hover:bg-blue-100 cursor-pointer text-blue-600 justify-between py-1 px-4">
           <img src="../assets/icons/icon_pencil.svg" class="w-5 h-5" alt=".."/>
           <p class="text-base font-normal">Personal assistance</p>
-        </a>
+        </div>
       </div>
     </div>
+
+    <!-- playground -->
+    <div class="flex-col justify-center text-center items-center h-[100vh] w-full" id="playground">
+      <div id="close" class="fixed top-2 right-5 z-40 bg-gray-200 rounded-[50px] p-2 cursor-pointer shadow-md">
+        <img src="../assets/icons/icon_clear.svg" alt=".">
+      </div>
+      <div class="flex-col text-justify pb-[28vh]" id="window">
+        <div class="flex-col mt-[10vh] mx-[10vw]" id="examples">
+          <div class="grid grid-cols-3 gap-2">
+            <div class="">
+              <p class="text-xl mb-3 text-center">Examples</p>
+              <div class="bg-gray-200 cursor-pointer hover:bg-slate-300 rounded-md p-4 mb-2 text-center">
+                <p>What is benefits of taking a balance diet</p>
+                <input type="text" value="What is benefits of taking a balance diet" hidden/>
+              </div>
+              <div class="bg-gray-200 cursor-pointer hover:bg-slate-300 rounded-md p-4 mb-2 text-center">
+                <p>I've been experiencing shoulder pain</p>
+                <input type="text" value="I've been experiencing shoulder pain" hidden/>
+              </div>
+              <div class="bg-gray-200 cursor-pointer hover:bg-slate-300 rounded-md p-4 text-center">
+                <p>How to loss weight</p>
+                <input type="text" value="IHow to loss weight" hidden/>
+              </div>
+            </div>
+            <div class="">
+              <p class="text-xl mb-3 text-center">Capabilities</p>
+              <div class="bg-gray-200 hover:bg-slate-300 rounded-md p-4 mb-2 text-center">
+                <p>Can search through common illness.</p> 
+              </div>
+              <div class="bg-gray-200 hover:bg-slate-300 rounded-md p-4 mb-2 text-center">
+                <p>Wide range of usefull response</p>
+              </div>
+              <div class="bg-gray-200 hover:bg-slate-300 rounded-md p-4 text-center">
+                <p>Stay health</p>
+              </div>
+            </div>
+            <div class="">
+              <p class="text-xl mb-3 text-center">Limitations</p>
+              <div class="bg-gray-200 hover:bg-slate-300 rounded-md p-4 mb-2 text-center">
+                <p>Its response is about 80% accurate</p>
+              </div>
+              <div class="bg-gray-200 hover:bg-slate-300 rounded-md p-4 mb-2 text-center">
+                <p>Accepts on medical related prompts</p>
+              </div>
+              <div class="bg-gray-200 hover:bg-slate-300 rounded-md p-4">
+                <p>Runs on a small dataset</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="chat-window">
+          <div class="text-lg py-10 flex bg-gray-100 px-10" id="question">
+            <img src="../assets/bot.jpeg" alt="bot" class="w-10 h-10 rounded-[10px]"/>
+            <p class="py-1 pl-3">What is malaria</p>
+          </div>
+          <div class="text-lg bg-gray-300 pb-10 pt-5 px-10" id="answer">
+            <p>It is a tropical infection caused by mosquitos. It is a bad 
+              infection that is bad so bad to the human health.
+            </p>
+          </div>
+  
+          <div class="text-lg py-10 flex bg-gray-100 px-10" id="question">
+            <img src="../assets/bot.jpeg" alt="bot" class="w-10 h-10 rounded-[10px]"/>
+            <p class="py-1 pl-3">What is malaria</p>
+          </div>
+          <div class="text-lg bg-gray-300 pb-10 pt-5 px-10" id="answer">
+            <p>It is a tropical infection caused by mosquitos. It is a bad 
+              infection that is bad so bad to the human health.
+            </p>
+          </div>
+        </div>
+
+        
+      </div>
+
+      <div class="flex-col bg-white fixed bottom-0 top-[75vh] right-0 left-0">
+        <form id="playground-form" class="flex justify-between fixed right-0 left-[5vw] bottom-[10vh] pr-10">
+          <input id="playground-input" name="input" type="text" placeholder="Ask me a question" class="border w-[80vw] px-2 py-1 rounded-md border-slate-400"/>
+          <button>
+            <img src="../assets/send.jpg" alt="." class="w-12 h-8 rounded-md"/>
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- You can also require other files to run in this process -->
     <script type="module" src="./renderer.js"></script>
   </body>

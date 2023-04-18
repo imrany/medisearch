@@ -10,6 +10,10 @@ const searchInput=document.querySelector("#search-input");
 const searchContent=document.querySelector("#search-content");
 const resultContent=document.querySelector("#result-items");
 const optionsElement=document.getElementById("options");
+const openPlayground=document.getElementById("open-playground");
+const playground=document.getElementById("playground");
+const home=document.getElementById("home");
+const closePlayground=document.getElementById("close");
 
 let searchData=[];
 const fun=async()=>{
@@ -80,6 +84,36 @@ async function search(e){
     }
 }
 
+function clickOpenPlayground(){
+    playground.style.display="block";
+    home.style.display="none"
+}
+function clickClosePlayground(){
+    playground.style.display="none";
+    home.style.display="block";
+}
+
+const playgroundForm=document.getElementById("playground-form");
+const playgroundInput=document.getElementById("playground-input");
+const examples=document.getElementById("examples");
+const chatWindow=document.getElementById("chat-window");
+function submit(e){
+    e.preventDefault();
+    const input=playgroundForm.input.value;
+    examples.style.display="none";
+    chatWindow.style.display="block"
+    console.log(input)
+    try {
+        
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+playgroundForm.addEventListener("submit",submit);
+
+
+closePlayground.addEventListener("click",clickClosePlayground)
+openPlayground.addEventListener('click',clickOpenPlayground);
 searchInput.addEventListener('change',expand);
 searchInput.addEventListener('keydown',options);
 searchForm.addEventListener("submit",search);

@@ -102,16 +102,44 @@ function submit(e){
     const input=playgroundForm.input.value;
     examples.style.display="none";
     chatWindow.style.display="block"
-    console.log(input)
     try {
-        
+
+        const chatContext=[
+            {
+                botAnswer:"It is a tropical infection caused by mosquitos. It is a bad infection that is bad so bad to the human health."
+            }
+        ]
+
+        chatContext.map(i=>{
+            let timer;
+            let n = 0;
+            function type() {
+                document.querySelector(".res").innerHTML+=`${i.botAnswer[n]}`;
+                n++;
+                if(n >= i.botAnswer.length){
+                    clearInterval(timer);
+                } 
+            }
+            timer = setInterval(type, 100);
+            let li=`
+                <div class="text-lg py-10 flex bg-gray-100 px-10" id="question">
+                    <img src="../assets/bot.jpeg" alt="bot" class="w-10 h-10 rounded-[10px]"/>
+                    <p class="py-1 pl-3">${input}</p>
+                </div>
+                <div class="flex text-lg bg-gray-300 pb-10 pt-5 px-10" id="answer">
+                    <p class="res mr-2"></p><span id="cursor" class="point font-[monospace]">&nbsp;</span>
+                </div>
+            `
+            chatWindow.innerHTML+=li;
+        });
+
+        playgroundForm.reset()
     } catch (error) {
         console.log(error.message)
     }
 }
+
 playgroundForm.addEventListener("submit",submit);
-
-
 closePlayground.addEventListener("click",clickClosePlayground)
 openPlayground.addEventListener('click',clickOpenPlayground);
 searchInput.addEventListener('change',expand);

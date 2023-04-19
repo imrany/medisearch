@@ -1,8 +1,6 @@
-/* styles.css */
-
-/* Add styles here to customize the appearance of your app */
-
-/* ! tailwindcss v3.3.1 | MIT License | https://tailwindcss.com */
+/*
+! tailwindcss v3.3.1 | MIT License | https://tailwindcss.com
+*/
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -835,6 +833,10 @@ video {
   text-align: justify;
 }
 
+.font-\[monospace\] {
+  font-family: monospace;
+}
+
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
@@ -909,8 +911,30 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+/* input.css */
+
+/* Add styles here to customize the appearance of your app */
+
 #playground,#chat-window{
   display: none;
+}
+
+/* Define the animation */
+
+@keyframes alternating-colors {
+  0% {
+    color: white;
+    background-color:black;
+  }
+
+  50% {
+    color: black;
+    background-color: white;
+  }
+}
+
+.point {
+  animation: alternating-colors 2s steps(1, jump-end) infinite;
 }
 
 .hover\:border-white:hover {

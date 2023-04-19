@@ -97,6 +97,9 @@ const playgroundForm=document.getElementById("playground-form");
 const playgroundInput=document.getElementById("playground-input");
 const examples=document.getElementById("examples");
 const chatWindow=document.getElementById("chat-window");
+
+let count=0;
+let res=0;
 function submit(e){
     e.preventDefault();
     const input=playgroundForm.input.value;
@@ -111,26 +114,39 @@ function submit(e){
         ]
 
         chatContext.map(i=>{
-            let timer;
-            let n = 0;
-            function type() {
-                document.querySelector(".res").innerHTML+=`${i.botAnswer[n]}`;
-                n++;
-                if(n >= i.botAnswer.length){
-                    clearInterval(timer);
-                } 
-            }
-            timer = setInterval(type, 100);
             let li=`
                 <div class="text-lg py-10 flex bg-gray-100 px-10" id="question">
                     <img src="../assets/bot.jpeg" alt="bot" class="w-10 h-10 rounded-[10px]"/>
                     <p class="py-1 pl-3">${input}</p>
                 </div>
                 <div class="flex text-lg bg-gray-300 pb-10 pt-5 px-10" id="answer">
-                    <p class="res mr-2"></p><span id="cursor" class="point font-[monospace]">&nbsp;</span>
+                    <p class="res-${res} mr-2"></p> <span id="cursor" class="point font-[monospace]">&nbsp;</span>
                 </div>
             `
             chatWindow.innerHTML+=li;
+            
+            var newDiv = document.createElement("div");
+            newDiv.className=`my-class-${count}`;
+            console.log(`my-class-${count}`)
+            console.log(`res-${res}`)
+            let timer;
+            let n = 0;
+            function type() {
+                document.querySelector(`.my-class-${count}`).innerHTML+=`${i.botAnswer[n]}`;
+                n++;
+                if(n >= i.botAnswer.length){
+                    clearInterval(timer);
+                    playgroundForm.style.display="flex"
+                    document.getElementById("bottom").scrollIntoView();
+                    ++count;
+                    ++res
+                }else{
+                    playgroundForm.style.display="none"
+                } 
+            } 
+            timer = setInterval(type, 100);
+            document.querySelector(`.res-${res}`).appendChild(newDiv)
+            
         });
 
         playgroundForm.reset()

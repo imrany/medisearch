@@ -120,12 +120,13 @@ function submit(e){
                     <p class="py-1 pl-3">${input}</p>
                 </div>
                 <div class="flex text-lg bg-gray-300 pb-10 pt-5 px-10" id="answer">
-                    <p class="res-${res} mr-2"></p> <span id="cursor" class="point font-[monospace]">&nbsp;</span>
+                    <p class="res-${res} mr-2"></p> 
                 </div>
             `
             chatWindow.innerHTML+=li;
             
             var newDiv = document.createElement("div");
+            let point=document.createElement("div")
             newDiv.className=`my-class-${count}`;
             console.log(`my-class-${count}`)
             console.log(`res-${res}`)
@@ -146,7 +147,8 @@ function submit(e){
             } 
             timer = setInterval(type, 100);
             document.querySelector(`.res-${res}`).appendChild(newDiv)
-            
+            point.innerHTML="<span id='cursor' class='point font-[monospace]'>&nbsp;</span>"
+            document.querySelector(`.res-${res}`).after(point);
         });
 
         playgroundForm.reset()

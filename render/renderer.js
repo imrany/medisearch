@@ -16,9 +16,10 @@ const home=document.getElementById("home");
 const closePlayground=document.getElementById("close");
 
 let searchData=[];
+let QnA=[]
 const fun=async()=>{
-    const response=await window.versions.serve();
-    searchData=response;
+    searchData=await window.versions.serve();
+    QnA=await window.versions.QnA();
 }
 fun()
 
@@ -107,50 +108,48 @@ function submit(e){
     chatWindow.style.display="block"
     try {
 
-        const chatContext=[
-            {
-                botAnswer:"It is a tropical infection caused by mosquitos. It is a bad infection that is bad so bad to the human health."
-            }
-        ]
-
-        chatContext.map(i=>{
-            let li=`
-                <div class="text-lg py-10 flex bg-gray-100 px-10" id="question">
-                    <img src="../assets/bot.jpeg" alt="bot" class="w-10 h-10 rounded-[10px]"/>
-                    <p class="py-1 pl-3">${input}</p>
-                </div>
-                <div class="flex text-lg bg-gray-300 pb-10 pt-5 px-10" id="answer">
-                    <p class="res-${res} mr-2"></p> 
-                </div>
-            `
-            chatWindow.innerHTML+=li;
-            
-            var newDiv = document.createElement("div");
-            let point=document.createElement("div")
-            newDiv.className=`my-class-${count}`;
-            console.log(`my-class-${count}`)
-            console.log(`res-${res}`)
-            let timer;
-            let n = 0;
-            function type() {
-                document.querySelector(`.my-class-${count}`).innerHTML+=`${i.botAnswer[n]}`;
-                n++;
-                if(n >= i.botAnswer.length){
-                    clearInterval(timer);
-                    playgroundForm.style.display="flex"
-                    document.getElementById("bottom").scrollIntoView();
-                    ++count;
-                    ++res
-                }else{
-                    playgroundForm.style.display="none"
-                } 
-            } 
-            timer = setInterval(type, 100);
-            document.querySelector(`.res-${res}`).appendChild(newDiv)
-            point.innerHTML="<span id='cursor' class='point font-[monospace]'>&nbsp;</span>"
-            document.querySelector(`.res-${res}`).after(point);
+        QnA.map(i=>{
+            i.tags.map(item=>{
+                let result=item.includes(input)
+                if(result){
+                    console.log(i)
+                    let li=`
+                        <div class="text-lg py-10 flex bg-gray-100 px-10" id="question">
+                            <img src="../assets/bot.jpeg" alt="bot" class="w-10 h-10 rounded-[10px]"/>
+                            <p class="py-1 pl-3">${input}</p>
+                        </div>
+                        <div class="flex text-lg bg-gray-300 pb-10 pt-5 px-10" id="answer">
+                            <p class="res-${res} mr-2"></p> 
+                        </div>
+                    `
+                    chatWindow.innerHTML+=li;
+                    var point=document.createElement("div")
+                    var newDiv = document.createElement("div");
+                    newDiv.className=`my-class-${count}`;
+                    let timer;
+                    let n = 0;
+                    function type() {
+                        document.querySelector(`.my-class-${count}`).innerHTML+=`${i.answer[n]}`;
+                        n++;
+                        if(n >= i.answer.length){
+                            clearInterval(timer);
+                            playgroundForm.style.display="flex"
+                            document.getElementById("bottom").scrollIntoView();
+                            ++count;
+                            ++res
+                        }else{
+                            playgroundForm.style.display="none";
+                        } 
+                    } 
+                    timer = setInterval(type, 100);
+                    document.querySelector(`.res-${res}`).appendChild(newDiv)
+                    point.innerHTML="<span id='cursor' class='point font-[monospace]'>&nbsp;</span>"
+                    document.querySelector(`.res-${res}`).after(point);
+                    //
+                    document.querySelector(`.res-${res}`).after(poit);
+                }
+            })
         });
-
         playgroundForm.reset()
     } catch (error) {
         console.log(error.message)

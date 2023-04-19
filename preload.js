@@ -8,5 +8,6 @@
 const {contextBridge, ipcRenderer}=require("electron");
 
 contextBridge.exposeInMainWorld('versions',{
-  serve:()=>ipcRenderer.invoke('serve')
+  serve:()=>ipcRenderer.invoke('serve'),
+  QnA:()=>ipcRenderer.invoke("QnA"),
 })

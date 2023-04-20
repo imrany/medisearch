@@ -118,13 +118,17 @@ function submit(e){
                             <img src="../assets/bot.jpeg" alt="bot" class="w-10 h-10 rounded-[10px]"/>
                             <p class="py-1 pl-3">${input}</p>
                         </div>
-                        <div class="flex text-lg bg-gray-300 pb-10 pt-5 px-10" id="answer">
-                            <p class="res-${res} mr-2"></p> 
+                        <div class="flex-col text-lg bg-gray-300 pb-12 pt-5 px-10 show-${count}" id="answer">
+                            <div class="flex mb-4">
+                                <p class="res-${res} mr-2"></p> 
+                            </div>    
+                            
                         </div>
                     `
                     chatWindow.innerHTML+=li;
                     var point=document.createElement("div")
                     var newDiv = document.createElement("div");
+                    const moreAboutIt=document.createElement("div")
                     newDiv.className=`my-class-${count}`;
                     let timer;
                     let n = 0;
@@ -136,6 +140,12 @@ function submit(e){
                             playgroundForm.style.display="flex"
                             playgroundForm.reset()
                             document.getElementById("bottom").scrollIntoView();
+                            moreAboutIt.innerHTML=`
+                            <a href="${i.url}" class="text-sm text-gray-500 py-1 px-4 rounded-[40px] float-right bg-slate-100 hover:text-black cursor-pointer border border-slate-100">
+                            more about it 
+                            </a>
+                            `
+                            document.querySelector(`.show-${count}`).appendChild(moreAboutIt)
                             ++count;
                             ++res
                         }else{

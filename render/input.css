@@ -4,7 +4,7 @@
 
 /* input.css */
 /* Add styles here to customize the appearance of your app */
-#playground,#chat-window{
+#playground,#chat-window, .more-about-it{
     display: none;
 }
 /* Define the animation */

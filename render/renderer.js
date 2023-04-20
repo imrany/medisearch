@@ -134,6 +134,7 @@ function submit(e){
                         if(n >= i.answer.length){
                             clearInterval(timer);
                             playgroundForm.style.display="flex"
+                            playgroundForm.reset()
                             document.getElementById("bottom").scrollIntoView();
                             ++count;
                             ++res
@@ -150,7 +151,6 @@ function submit(e){
                 }
             })
         });
-        playgroundForm.reset()
     } catch (error) {
         console.log(error.message)
     }
